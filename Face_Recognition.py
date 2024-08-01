@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 sys.stdout.reconfigure(encoding='utf-8')
 
 # Load the model
-model = load_model(r"D:\spider chart\face-emotion-recognition\emotion_recognition_model.h5")
+model = load_model(r"Model Path")
 print("Model loaded successfully")
 
 # Load the Haar Cascade for face detection

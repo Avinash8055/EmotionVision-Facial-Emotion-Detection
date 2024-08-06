@@ -4,11 +4,9 @@ import numpy as np
 from keras.preprocessing import image
 import warnings
 import sys
-import time  # Import the time module to add delay
-import msvcrt  # Module for handling key events on Windows
+import time
 warnings.filterwarnings("ignore")
 from keras.models import load_model
-import matplotlib.pyplot as plt
 
 # Set default encoding to UTF-8
 sys.stdout.reconfigure(encoding='utf-8')
@@ -62,12 +60,10 @@ while True:
     resized_img = cv2.resize(test_img, (1000, 700))
     cv2.imshow('Facial emotion analysis', resized_img)
 
-    # Add delay to slow down the processing
-    time.sleep(1)  # Sleep for 1 second
-
-    # Check if Enter key is pressed
-    if msvcrt.kbhit() and msvcrt.getch() == b'\r':  # '\r' is the Enter key in Windows
-        print("Enter key pressed. Exiting...")
+    # Use cv2.waitKey() to check for user input and add delay
+    key = cv2.waitKey(1) & 0xFF
+    if key == 27:  # ESC key to exit
+        print("ESC key pressed. Exiting...")
         break
 
 cap.release()
